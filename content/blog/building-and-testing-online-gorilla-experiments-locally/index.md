@@ -2,7 +2,10 @@
 title: Building and testing online Gorilla experiments locally
 date: "2021-08-05"
 description: A potential solution for JavaScript developers looking to create experiments for Gorilla on their machines locally.
+tags: ["🧠", "👨‍💻"]
 ---
+
+_A potential solution for JavaScript developers looking to create experiments for Gorilla on their machines locally._
 
 After spending time myself developing experiments that were to run locally in a laboratory and online via Gorilla, I decided to spend some time trying to work out a way that I could streamline my development such that I would only have to modify code in one location - on my laptop in the comfort of my own development environment and configuration.
 
@@ -145,38 +148,21 @@ Let’s start with an easy win, setting up the `desktop` configuration. The firs
 // ...
 ```
 
-You’ll see I added an error message if for some reason the variable comes back `undefined`. Next I can `require(...)` any other jsPsych plugins that I plan to be using in my timeline. This should be done before `jsPsych.init` is called, otherwise any plugins used in your timeline will be `undefined` at the time of running `jsPsych.init` and will raise an error.
+You’ll see I added an error message if for some reason the variable comes back `undefined`.
 
-For example, if I wish to use the `jspsych-instructions.js` plugin in my timeline, I would simply add `require('jspsych/plugins/jspsych-instructions');` inside my new `if` block like so:
-
-```js
-// ...
-} else if (config.target === 'desktop') {
-  // Wait for the entire page to be loaded before accessing jsPsych and Gorilla
-  const _jsPsych = window['jsPsych'];
-
-  if (_jsPsych) {
-    // 'require' any jsPsych plugins used, so that they are loaded at this stage of the script execution
-    require('jspsych/plugins/jspsych-instructions');
-    // jsPsych.init block here...
-  } else {
-    console.error('Fatal: jsPsych not loaded.');
-  }
-}
-// ...
-```
+Next I need to make sure I `import ...` any other jsPsych plugins that I plan to be using in my timeline. This should be done at the top of the file.
 
 Finally, I can then call the `jsPsych.init` method using my parameters of choice, but note how the `_jsPsych` variable is used below:
 
 ```js
+import 'jspsych/jspsych'
+import 'jspsych/plugins/jspsych-instructions'
 // ...
 } else if (config.target === 'desktop') {
   // Wait for the entire page to be loaded before accessing jsPsych and Gorilla
   const _jsPsych = window['jsPsych'];
 
   if (_jsPsych) {
-    // 'require' any jsPsych plugins used, so that they are loaded at this stage of the script execution
-    require('jspsych/plugins/jspsych-instructions');
     _jsPsych.init({
       timeline: timeline,
       on_finish: function() {
@@ -219,6 +205,8 @@ if (config.target === 'gorilla') {
 The next step is to confirm that Gorilla and jsPsych have been loaded correctly, raising an error if not:
 
 ```js
+import 'jspsych/jspsych'
+import 'jspsych/plugins/jspsych-instructions'
 // ...
 if (config.target === 'gorilla') {
   // Wait for the entire page to be loaded before accessing jsPsych and Gorilla
@@ -234,29 +222,11 @@ if (config.target === 'gorilla') {
 // ...
 ```
 
-Again, I `require(...)` any plugins I may be using in my timeline:
-
-```js
-// ...
-if (config.target === 'gorilla') {
-  // Wait for the entire page to be loaded before accessing jsPsych and Gorilla
-  const _gorilla = window['gorilla'];
-  const _jsPsych = window['jsPsych'];
-
-  if (_gorilla && _jsPsych) {
-    // Require any jsPsych plugins, so that they are loaded here
-    require('jspsych/plugins/jspsych-instructions');
-    // ...
-  } else {
-    console.error(`Fatal: Gorilla or jsPsych not loaded.`);
-  }
-}
-// ...
-```
-
 Next, I can add a call to the `gorilla.ready` function, similar to the original online template file:
 
 ```js
+import 'jspsych/jspsych'
+import 'jspsych/plugins/jspsych-instructions'
 // ...
 if (config.target === 'gorilla') {
   // Wait for the entire page to be loaded before accessing jsPsych and Gorilla
@@ -265,7 +235,6 @@ if (config.target === 'gorilla') {
 
   if (_gorilla && _jsPsych) {
     // Require any jsPsych plugins, so that they are loaded here
-    require('jspsych/plugins/jspsych-instructions');
     _gorilla.ready(function() {
       // jsPsych.init block here...
     });
@@ -279,6 +248,8 @@ if (config.target === 'gorilla') {
 Finally, I can essentially paste in the `jsPsych.init` call from the original template file inside the `gorilla.ready` API call. I just need to replace any `jsPsych` references with `_jsPsych`, and any `gorilla` references with `_gorilla` like so:
 
 ```js
+import 'jspsych/jspsych'
+import 'jspsych/plugins/jspsych-instructions'
 // ...
 if (config.target === 'gorilla') {
   // Wait for the entire page to be loaded before accessing jsPsych and Gorilla
@@ -287,7 +258,6 @@ if (config.target === 'gorilla') {
 
   if (_gorilla && _jsPsych) {
     // Require any jsPsych plugins, so that they are loaded here
-    require('jspsych/plugins/jspsych-instructions');
     _gorilla.ready(function() {
       _jsPsych.init({
         display_element: $('#gorilla')[0],
@@ -312,6 +282,8 @@ And that’s it! That’s the essence of coding up the two alternate implementat
 You should have something that generally resembles the snippet below:
 
 ```js
+import 'jspsych/jspsych'
+import 'jspsych/plugins/jspsych-instructions'
 // ...
 window.onload = () => {
   const timeline = []
@@ -323,11 +295,9 @@ window.onload = () => {
     // Once all modules are loaded into the window, access Gorilla API and jsPsych library
     const _gorilla = window['gorilla'];
     const _jsPsych = window['jsPsych'];
-
+  
     // Make sure Gorilla and jsPsych are loaded
     if (_gorilla && _jsPsych) {
-      // Require any jsPsych plugins, so that they are loaded here
-      require('jspsych/plugins/jspsych-instructions');
       _gorilla.ready(function() {
         _jsPsych.init({
           display_element: $('#gorilla')[0],
@@ -346,15 +316,13 @@ window.onload = () => {
   } else if (config.target === 'desktop') {
     // Once all modules are loaded into the window, access jsPsych library
     const _jsPsych = window['jsPsych'];
-
+  
     // Make sure jsPsych is loaded
     if (_jsPsych) {
-      // Require any jsPsych plugins, so that they are loaded here
-      require('jspsych/plugins/jspsych-instructions');
       _jsPsych.init({
         timeline: timeline,
         on_finish: function() {
-
+  
         },
       });
     } else {
@@ -374,8 +342,6 @@ To develop the experiment locally, I firstly check that the `target` in `src/con
 
 If I want to deploy the experiment for a laboratory context, I can go ahead and run `yarn build`. This will generate a HTML and `*.bundle.js` file in the `built/` subdirectory. These two files are all that is required to run the experiment offline on a laboratory computer.
 
-![The experiment running in the local development environment.](Screen%20Shot%202021-08-04%20at%207.04.21%20pm.png)
-
 ### Gorilla
 
 As explained in the ‘Desktop’ section above, I can easily go about developing the experiment and previewing the experiment in my browser.
@@ -387,8 +353,6 @@ If I want to generate a Gorilla build, I usually run `yarn clean` to remove any 
 ```
 
 I can then click ‘Preview’ and see the experiment running online in Gorilla!
-
-![The experiment running online in Gorilla.](Screen%20Shot%202021-08-04%20at%207.10.46%20pm.png)
 
 To update the Gorilla version, I simply run a new build locally, and then re-upload the `*.bundle.js` file as a ‘Resource’.
 
@@ -402,12 +366,7 @@ I used TypeScript for this project, requiring me to configure a TS compiler. The
 
 ### WebPack
 
-WebPack acted as the pipeline that would compile the TS code and bundle any dependencies. In order to get jsPsych bundled, I did have to add a couple of lines at the top of the file to ensure it was added:
-
-```js
-// Import jsPsych to ensure it is bundled when compiled
-import 'jspsych/jspsych';
-```
+WebPack acted as the pipeline that would compile the TS code and bundle any dependencies.
 
 Additionally, you may have noticed a `$` symbol in the `gorilla` target code. This was a reference to the jQuery library that Gorilla uses. I added jQuery as a dependency and imported it into the file also:
 
@@ -440,3 +399,11 @@ Thirdly, this has already been covered above, but TS and JS are supported in the
 Finally, the entire process has been simplified and streamlined, making use of modern development tools. The use of these tools has made it possible to create experiments that run both locally and on Gorilla. These tools have opened online experimentation to an enormous collection of open-source libraries that will hopefully lead to exciting and adventurous online experiments being created in the future.
 
 I would appreciate any feedback that more experienced web developers may have on this project! I am somewhat new to web development, so any testing would be much-appreciated also.
+
+## Corrections and Updates
+
+### Update 27 November 2021
+
+You’ll see in most of the code snippets that interact with Gorilla or jsPsych, I make use of inline `require()` statements. This is not a good idea, and I have learnt otherwise recently. Fortunately it is an easy adjustment to make, simply substitute the `require()` statements for identical `import ...` statements at the top of the file. If you had been following along anyway, you should have included `import 'jspsych/jspsych'`. It is simply a matter of `import`-ing rather than `require()`-ing.
+
+I have updated the code snippets accordingly.

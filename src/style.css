@@ -85,6 +85,7 @@ body {
 footer {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: var(--spacing-6);
   padding: var(--spacing-6) var(--spacing-0);
 }
@@ -255,6 +256,7 @@ a:focus {
   flex-direction: row;
   gap: var(--spacing-8);
   align-items: center;
+  justify-content: space-between;
 }
 
 .main-heading {
@@ -289,6 +291,17 @@ a:focus {
   font-size: var(--fontSize-2);
 }
 
+.header-items {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-direction: row;
+}
+
 .footer-item {
   display: flex;
   gap: var(--spacing-2);
@@ -312,6 +325,14 @@ a:focus {
   margin-right: var(--spacing-4);
   margin-bottom: var(--spacing-0);
   min-width: 50px;
+  border-radius: 100%;
+}
+
+.about-avatar {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-0);
+  min-width: 100px;
   border-radius: 100%;
 }
 
