@@ -24,7 +24,16 @@ const Post = ({ data, location }) => {
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>Posted {post.frontmatter.date}</p>
+          <div className="blog-post-info">
+            <p>Posted: {post.frontmatter.date}</p>
+            <p>Tags: {
+                post.frontmatter.tags.map(tag => {
+                  return (
+                    <Link className="blog-post-tag" key={tag} to={`/tags/${tag}`}>{tag}</Link>
+                  )
+                })
+              }</p>
+          </div>
         </header>
 
         <section
@@ -88,6 +97,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

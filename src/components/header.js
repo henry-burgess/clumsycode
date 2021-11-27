@@ -6,7 +6,8 @@ const Header = ({ children }) => {
       className="global-header"
     >
       {children}
-      <div>
+      <div className="header-items">
+        <a href='/tags'>Tags</a>
         <a href='/about'>About</a>
       </div>
     </div>

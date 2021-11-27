@@ -14,7 +14,7 @@ module.exports = {
     title: `Clumsy Code`,
     author: {
       name: `Henry Burgess`,
-      summary: `about the reality of writing code and the quest for perfection.`,
+      summary: `about the reality of writing code and the quest for writing it perfectly.`,
     },
     description: `The personal blog of Henry Burgess.`,
     siteUrl: `https://clumsycode.com`,

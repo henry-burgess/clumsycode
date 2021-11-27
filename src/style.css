@@ -85,6 +85,7 @@ body {
 footer {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: var(--spacing-6);
   padding: var(--spacing-6) var(--spacing-0);
 }
@@ -255,6 +256,7 @@ a:focus {
   flex-direction: row;
   gap: var(--spacing-8);
   align-items: center;
+  justify-content: space-between;
 }
 
 .main-heading {
@@ -289,6 +291,17 @@ a:focus {
   font-size: var(--fontSize-2);
 }
 
+.header-items {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.footer-social {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-direction: row;
+}
+
 .footer-item {
   display: flex;
   gap: var(--spacing-2);
@@ -315,6 +328,14 @@ a:focus {
   border-radius: 100%;
 }
 
+.about-avatar {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-0);
+  min-width: 100px;
+  border-radius: 100%;
+}
+
 .blog-post header h1 {
   margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
 }
@@ -326,6 +347,15 @@ a:focus {
 
 .blog-post-nav ul {
   margin: var(--spacing-0);
+}
+
+.blog-post-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-post-tag {
+  margin-right: var(--spacing-2);
 }
 
 .gatsby-highlight {
