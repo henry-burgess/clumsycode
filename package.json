@@ -33,6 +33,12 @@
     "typeface-montserrat": "0.0.75"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.3.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-webpack-plugin": "^3.1.1",
+    "gatsby-plugin-eslint": "^4.0.2",
     "prettier": "^2.4.1"
   },
   "homepage": "https://clumsycode.com",
@@ -46,7 +52,7 @@
     "url": "git+https://github.com/henry-burgess/clumsycode.git"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">=14.x"
   },
   "scripts": {
     "build": "gatsby build",
