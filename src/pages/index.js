@@ -5,6 +5,8 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import { calculateReadingTime } from "../util/functions"
+
 const Index = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
@@ -30,6 +32,13 @@ const Index = ({ data, location }) => {
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
+          // Calculate article length
+          const [indicators, readingTime] = calculateReadingTime(post.html)
+          let readingIndicator = ""
+          for (let i = 0; i < indicators; i++) {
+            readingIndicator = readingIndicator + "☕️ "
+          }
+
           return (
             <li key={post.fields.slug}>
               <article
@@ -43,7 +52,10 @@ const Index = ({ data, location }) => {
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <div className="post-item-info">
+                    <small>{post.frontmatter.date}</small>
+                    <small>{readingIndicator}&nbsp;{readingTime} minute read</small>
+                  </div>
                 </header>
                 <section>
                   <p
@@ -52,6 +64,13 @@ const Index = ({ data, location }) => {
                     }}
                     itemProp="description"
                   />
+                  <p><strong>Tags:&nbsp;</strong>{
+                      post.frontmatter.tags.map(tag => {
+                        return (
+                          <Link className="blog-post-tag" key={tag} to={`/tags/${tag}`}>{tag}</Link>
+                        )
+                      })
+                    }</p>
                 </section>
               </article>
             </li>
@@ -81,7 +100,9 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          tags
         }
+        html
       }
     }
   }
