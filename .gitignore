@@ -1,6 +1,3 @@
-# Gatsby
-public
-
 # Logs
 logs
 *.log
@@ -87,9 +84,10 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
+public/
+
+# MacOS
+.DS_Store
 
 # vuepress build output
 .vuepress/dist
