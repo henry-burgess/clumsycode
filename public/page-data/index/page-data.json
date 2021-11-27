@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-index-js",
+    "path": "/",
+    "result": {"data":{"site":{"siteMetadata":{"title":"Clumsy Code"}},"allMarkdownRemark":{"nodes":[{"excerpt":"After spending time myself developing experiments that were to run locally in a laboratory and online via Gorilla, I decided to spend some…","fields":{"slug":"/building-and-testing-online-gorilla-experiments-locally/"},"frontmatter":{"date":"August 05, 2021","title":"Building and testing online Gorilla experiments locally","description":"A potential solution for JavaScript developers looking to create experiments for Gorilla on their machines locally."}}]}},"pageContext":{}},
+    "staticQueryHashes": ["2355076697","3347749741"]}
