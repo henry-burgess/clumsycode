@@ -26,17 +26,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     {
-      resolve: "gatsby-plugin-eslint",
-      options: {
-        rulePaths: [gatsbyRequiredRules],
-        stages: ["develop"],
-        extensions: ["js", "jsx", "ts", "tsx"],
-        exclude: ["node_modules", "bower_components", ".cache", "public"],
-        // Any additional eslint-webpack-plugin options below
-        // ...
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/blog`,

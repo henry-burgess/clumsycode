@@ -29,17 +29,15 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "typeface-aleo": "^1.1.13",
+    "typeface-cabin": "^1.1.13",
     "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-montserrat": "0.0.75",
+    "typeface-source-code-pro": "^1.1.13"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^8.3.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.27.1",
-    "eslint-webpack-plugin": "^3.1.1",
-    "gatsby-plugin-eslint": "^4.0.2",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "react-icons": "^4.3.1"
   },
   "homepage": "https://clumsycode.com",
   "keywords": [
