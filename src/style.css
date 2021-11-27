@@ -349,6 +349,15 @@ a:focus {
   margin: var(--spacing-0);
 }
 
+.blog-post-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-post-tag {
+  margin-right: var(--spacing-2);
+}
+
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);
 }
