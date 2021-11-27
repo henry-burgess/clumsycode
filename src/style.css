@@ -284,6 +284,12 @@ a:focus {
   margin-bottom: var(--spacing-4);
 }
 
+.post-item-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header-link-home {
   font-weight: var(--fontWeight-bold);
   font-family: var(--font-heading);
@@ -300,6 +306,7 @@ a:focus {
   display: flex;
   gap: var(--spacing-4);
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .footer-item {

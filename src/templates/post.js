@@ -4,11 +4,19 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import { calculateReadingTime } from "../util/functions"
 
 const Post = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+
+  // Calculate article length
+  const [indicators, readingTime] = calculateReadingTime(post.html)
+  let readingIndicator = ""
+  for (let i = 0; i < indicators; i++) {
+    readingIndicator = readingIndicator + "☕️ "
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,14 +33,13 @@ const Post = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <div className="blog-post-info">
-            <p>Posted: {post.frontmatter.date}</p>
-            <p>Tags: {
-                post.frontmatter.tags.map(tag => {
-                  return (
-                    <Link className="blog-post-tag" key={tag} to={`/tags/${tag}`}>{tag}</Link>
-                  )
-                })
-              }</p>
+            <p>{post.frontmatter.date}</p>
+            <p>
+              {readingIndicator}&nbsp;{readingTime} minute read
+            </p>
+          </div>
+          <div>
+            
           </div>
         </header>
 
@@ -40,6 +47,16 @@ const Post = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
+
+        <section>
+          <p><strong>Tags: &nbsp;</strong> {
+            post.frontmatter.tags.map(tag => {
+              return (
+                <Link className="blog-post-tag" key={tag} to={`/tags/${tag}`}>{tag}</Link>
+              )
+            })
+          }</p>
+        </section>
         <hr />
         <footer>
           <Bio />
