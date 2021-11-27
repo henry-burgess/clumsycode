@@ -28,7 +28,8 @@ const Bio = () => {
       <StaticImage
         className="bio-avatar"
         layout="fixed"
-        src="../images/memoji.jpeg"
+        formats={["auto"]}
+        src="../images/memoji.jpg"
         width={50}
         height={50}
         quality={95}

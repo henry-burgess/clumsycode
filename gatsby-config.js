@@ -1,3 +1,14 @@
+const path = require(`path`)
+
+const gatsbyRequiredRules = path.join(
+  process.cwd(),
+  "node_modules",
+  "gatsby",
+  "dist",
+  "utils",
+  "eslint-rules"
+);
+
 module.exports = {
   siteMetadata: {
     title: `Clumsy Code`,

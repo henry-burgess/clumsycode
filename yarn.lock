@@ -9861,6 +9861,11 @@ react-helmet@^6.1.0:
     react-fast-compare "^3.1.1"
     react-side-effect "^2.1.0"
 
+react-icons@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.3.1.tgz#2fa92aebbbc71f43d2db2ed1aed07361124e91ca"
+  integrity sha512-cB10MXLTs3gVuXimblAdI71jrJx8njrJZmNMEMC+sQu5B/BIOmlsAjskdqpn81y8UBVEGuHODd7/ci5DvoSzTQ==
+
 react-is@^16.12.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -11508,6 +11513,16 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-aleo@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-aleo/-/typeface-aleo-1.1.13.tgz#cd2cda2d932134eee2956d478c9a51a867106ad5"
+  integrity sha512-iuRLbEmD2x10kfHyEWviMH+fLrK9dcE1sPMYyx1l1gmyihg65Hh9OO77YEmxCXSG1IY0pe7CHsQkF2keOY6oNA==
+
+typeface-cabin@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-cabin/-/typeface-cabin-1.1.13.tgz#9c365222b2d0729251715cf43b25e0035d7ab2ef"
+  integrity sha512-Kp4ucB4Vfd95XbLdqAR/2D4YC7EwKbMMKYw0s9agJuj3ubChvK43C3lY9e8piwyO8RzyZipZkUAwbS7FttEYfQ==
+
 typeface-merriweather@0.0.72:
   version "0.0.72"
   resolved "https://registry.yarnpkg.com/typeface-merriweather/-/typeface-merriweather-0.0.72.tgz#2b990f5293252052d51d170c82d3892319ff0555"
@@ -11517,6 +11532,11 @@ typeface-montserrat@0.0.75:
   version "0.0.75"
   resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.75.tgz#b796d9c767ab8ed1343271985beb1e44b382b7b3"
   integrity sha512-8ski20t3hdwu2T85pVfjK4jsDbwW8yWzd+LAKxYEmu+JVLVlB7G2yfmdKZz06pUwYCLVFvHvup+NYYulHDpE+w==
+
+typeface-source-code-pro@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-source-code-pro/-/typeface-source-code-pro-1.1.13.tgz#88c8787f90294d00c3b05c35adc096a2d07d922f"
+  integrity sha512-TX3c89uW9uc5SJNFWY8HBFkZqcxcNY7nJz0rw+0Pk2ZVsog/v2d04yKRsPU+jJI4wFegOvWXbOWt927i/xUdIw==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

@@ -1,6 +1,7 @@
 // Custom typefaces
-import "typeface-montserrat"
-import "typeface-merriweather"
+import "typeface-aleo"
+import "typeface-cabin"
+import "typeface-source-code-pro"
 
 // Normalize CSS across browsers
 import "./src/normalize.css"
