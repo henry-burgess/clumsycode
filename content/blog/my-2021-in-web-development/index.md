@@ -5,6 +5,8 @@ description: My head spent the year in JavaScript, I've dumped some of my experi
 tags: ["👨‍💻"]
 ---
 
+_My head spent the year in JavaScript, I've dumped some of my experiences and learnings here._
+
 Here I want to write a bit about my adventure being new to JavaScript as a software engineering grad. Now you might think, sure, a software engineer probably finishes their degree knowing how to use all these tools. For me, my coursework focussed on OOP-adjacent languages such as Java and Python, and I had little to no coursework even using JavaScript.
 
 I’m going to include some _real_ source code, to show you that this honestly where I was at. For more context, I’ll be referring to a  project I’ve been working on for about 18 months now, a project I joined in the final year of my studies before becoming part of my first research job outside of university.
